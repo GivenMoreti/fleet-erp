@@ -1,0 +1,19 @@
+Maintenance Endpoints
+GET, POST
+http://localhost:8081/api/equipments
+
+DELETE, UPDATE
+
+http://localhost:8081/api/equipments/id
+
+
+
+Equipment endpoints
+GET, POST
+http://localhost:8081/api/maintenances
+
+DELETE, UPDATE
+http://localhost:8081/api/maintenances/id
+GET
+http://localhost:8081/api/equipments/maintenances
+
