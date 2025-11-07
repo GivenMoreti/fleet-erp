@@ -1,20 +1,23 @@
 package com.example.fleet_erp.models;
 
+import com.example.fleet_erp.enums.EquipmentStatus;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
-
-import com.example.fleet_erp.enums.EquipmentStatus;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -52,6 +55,9 @@ public class Equipment {
   @ManyToOne
   @JoinColumn(name = "category_id")
   private EquipmentCategory category;
+
+  @OneToMany(mappedBy = "equipment", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  private List<Maintenance> maintenances = new ArrayList<>();
 
   // Constructors
   public Equipment() {}

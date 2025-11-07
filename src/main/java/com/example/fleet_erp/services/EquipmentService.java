@@ -2,12 +2,15 @@ package com.example.fleet_erp.services;
 
 import com.example.fleet_erp.dto.EquipmentRequest;
 import com.example.fleet_erp.dto.EquipmentResponse;
+import com.example.fleet_erp.dto.MaintenanceResponse;
 import com.example.fleet_erp.enums.EquipmentCategoryEnums;
 import com.example.fleet_erp.mappers.EquipmentMapper;
+import com.example.fleet_erp.mappers.MaintenanceMapper;
 import com.example.fleet_erp.models.Equipment;
 import com.example.fleet_erp.models.EquipmentCategory;
 import com.example.fleet_erp.repository.CategoryRepository;
 import com.example.fleet_erp.repository.EquipmentRepository;
+import com.example.fleet_erp.repository.MaintenanceRepository;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -26,6 +29,7 @@ public class EquipmentService {
 
   @Autowired private EquipmentRepository repository;
   @Autowired private CategoryRepository categoryRepository;
+  @Autowired private MaintenanceRepository maintenanceRepository;
 
   public Page<EquipmentResponse> getEquipment(int page, int size, String sortBy, String sortDir) {
 
@@ -65,6 +69,17 @@ public class EquipmentService {
     List<Equipment> equipments = repository.findAll(sort);
 
     return equipments.stream().map(EquipmentMapper::toDto).collect(Collectors.toList());
+  }
+
+  // get all the maintenances associated with an equipment
+  // localhost:8081/api/equipment/id/maintenances
+  public List<MaintenanceResponse> getEquipmentsMaintenances(UUID id) {
+    Equipment e =
+        repository
+            .findById(id)
+            .orElseThrow(() -> new IllegalArgumentException("Equipment does not exist"));
+
+    return e.getMaintenances().stream().map(MaintenanceMapper::toDto).collect(Collectors.toList());
   }
 
   /*  ALLOWS YOU TO ADD A NEW FLEET TYPE INTO THE DATABASE

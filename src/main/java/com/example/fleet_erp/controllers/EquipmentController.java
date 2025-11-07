@@ -2,6 +2,7 @@ package com.example.fleet_erp.controllers;
 
 import com.example.fleet_erp.dto.EquipmentRequest;
 import com.example.fleet_erp.dto.EquipmentResponse;
+import com.example.fleet_erp.dto.MaintenanceResponse;
 import com.example.fleet_erp.services.EquipmentService;
 import java.util.List;
 import java.util.UUID;
@@ -60,6 +61,13 @@ public class EquipmentController {
 
     List<EquipmentResponse> equipments = equipmentService.getAllEquipmentSorted(sortBy, sortDir);
     return ResponseEntity.ok(equipments);
+  }
+
+  @GetMapping("/{id}/maintenances")
+  public ResponseEntity<List<MaintenanceResponse>> getEquipmentsMaintenances(
+      @PathVariable UUID id) {
+
+    return ResponseEntity.ok(equipmentService.getEquipmentsMaintenances(id));
   }
 
   @PostMapping
