@@ -28,6 +28,6 @@ public class MaintenanceRequest {
 
     private Double downtimeHours;
 
-    // private LocalDateTime createdAt = LocalDateTime.now();
-    // private LocalDateTime updatedAt;
+    private LocalDateTime createdAt = LocalDateTime.now();
+    private LocalDateTime updatedAt;
 }

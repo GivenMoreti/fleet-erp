@@ -54,7 +54,7 @@ public class EquipmentService {
     return equipments.map(EquipmentMapper::toDto);
   }
 
-  // GET ALL WITH DEFAULT DORTING
+  // GET ALL WITH DEFAULT SORTING
   public List<EquipmentResponse> getAllEquipmentSorted(String sortBy, String sortDir) {
 
     Sort sort =
