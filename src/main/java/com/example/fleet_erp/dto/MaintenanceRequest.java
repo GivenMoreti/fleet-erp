@@ -2,13 +2,9 @@ package com.example.fleet_erp.dto;
 
 import com.example.fleet_erp.enums.MaintenanceStatus;
 import com.example.fleet_erp.enums.MaintenanceType;
-import com.example.fleet_erp.models.Equipment;
-
 import java.time.LocalDateTime;
 import java.util.UUID;
-
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,7 +13,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-
 public class MaintenanceRequest {
 
   private String title;

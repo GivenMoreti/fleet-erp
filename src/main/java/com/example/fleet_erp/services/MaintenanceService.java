@@ -67,21 +67,26 @@ public class MaintenanceService {
       throw new IllegalArgumentException("Maintenance " + req.getTitle() + " already exists");
     }
 
-     if (req.getEquipmentId() == null) {
-        log.warn("Failed to add maintenance {} - equipment ID is required", req.getTitle());
-        throw new IllegalArgumentException("Equipment ID is required");
+    if (req.getEquipmentId() == null) {
+      log.warn("Failed to add maintenance {} - equipment ID is required", req.getTitle());
+      throw new IllegalArgumentException("Equipment ID is required");
     }
 
-      // Check if equipment exists
-    Equipment equipment = equipmentRepository.findById(req.getEquipmentId())
-        .orElseThrow(() -> {
-            log.warn("Failed to add maintenance {} - equipment not found with ID: {}", 
-                     req.getTitle(), req.getEquipmentId());
-            return new IllegalArgumentException("Equipment not found with ID: " + req.getEquipmentId());
-        });
+    // Check if equipment exists
+    Equipment equipment =
+        equipmentRepository
+            .findById(req.getEquipmentId())
+            .orElseThrow(
+                () -> {
+                  log.warn(
+                      "Failed to add maintenance {} - equipment not found with ID: {}",
+                      req.getTitle(),
+                      req.getEquipmentId());
+                  return new IllegalArgumentException(
+                      "Equipment not found with ID: " + req.getEquipmentId());
+                });
 
-
-      // create a new instance of maintenance
+    // create a new instance of maintenance
     Maintenance newMaintenance = new Maintenance();
     newMaintenance.setDescription(req.getDescription());
     newMaintenance.setDowntimeHours(req.getDowntimeHours());

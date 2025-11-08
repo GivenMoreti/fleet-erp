@@ -56,10 +56,9 @@ public class Equipment {
   @JoinColumn(name = "category_id")
   private EquipmentCategory category;
 
-
   // One Equipment can have many PreStartChecks
-    @OneToMany(mappedBy = "equipment", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<PreStartCheck> preStartChecks = new ArrayList<>();
+  @OneToMany(mappedBy = "equipment", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  private List<PreStartCheck> preStartChecks = new ArrayList<>();
 
   @OneToMany(mappedBy = "equipment", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
   private List<Maintenance> maintenances = new ArrayList<>();

@@ -42,14 +42,10 @@ public class MaintenanceController {
   }
 
   @PostMapping
-  public ResponseEntity<MaintenanceResponse> addMaintenance(@RequestBody MaintenanceRequest req)
-  {
-    
-      MaintenanceResponse response = service.addMaintenance(req);
+  public ResponseEntity<MaintenanceResponse> addMaintenance(@RequestBody MaintenanceRequest req) {
 
-      return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    MaintenanceResponse response = service.addMaintenance(req);
 
+    return ResponseEntity.status(HttpStatus.CREATED).body(response);
   }
-
-  
 }
