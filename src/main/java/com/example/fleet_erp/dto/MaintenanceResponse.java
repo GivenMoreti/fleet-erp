@@ -19,6 +19,8 @@ public class MaintenanceResponse {
 
   private String title;
 
+  private UUID equipmentId;
+
   private String description;
 
   private MaintenanceType type = MaintenanceType.scheduled;

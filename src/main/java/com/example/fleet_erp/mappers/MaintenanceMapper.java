@@ -21,6 +21,10 @@ public class MaintenanceMapper {
     response.setType(maintenance.getType());
     response.setUpdatedAt(maintenance.getUpdatedAt());
 
+     if (maintenance.getEquipment() != null) {
+            response.setEquipmentId(maintenance.getEquipment().getId());
+        }
+        
     return response;
   }
 
@@ -33,6 +37,9 @@ public class MaintenanceMapper {
     model.setType(req.getType());
     model.setStatus(req.getStatus());
     model.setEndTime(req.getEndTime());
+
+  
+
 
     return model;
   }

@@ -1,0 +1,106 @@
+Certificate
+- UUID id
+- String certificateName
+- String certificateNumber
+- LocalDate issueDate
+- LocalDate expiryDate
+
+CheckListStatus (enum)
+- PASS
+- FAIL
+
+Compliance
+- UUID id
+- UserCertificate userCert
+- PreStartCheck preStartCheck
+- boolean compliant
+- LocalDateTime createdAt
+
+Equipment
+- UUID id
+- String name
+- String description
+- Integer mileage
+- LocalDateTime dateAdded
+- LocalDateTime dateModified
+- Integer nextMaintenanceHours
+- EquipmentStatus status
+- EquipmentCategory category
+- List<Maintenance> maintenances
+
+EquipmentCategory
+- UUID id
+- String category
+
+Maintenance
+- UUID id
+- Equipment equipment
+- String title
+- String description
+- MaintenanceType type
+- MaintenanceStatus status
+- LocalDateTime startTime
+- LocalDateTime endTime
+- Double downtimeHours
+- LocalDateTime createdAt
+- LocalDateTime updatedAt
+
+PreStartCheck
+- UUID id
+- Equipment equipment
+- Shift shift
+- String username
+- boolean oilLevel
+- boolean engine
+- int mileage
+- String defectsReported
+- CheckListStatus overallStatus
+- String notes
+- LocalDateTime createdAt
+
+Role
+- UUID id
+- String name
+- String description
+- LocalDateTime dateCreated
+
+Shift
+- Long id
+- String name
+- LocalTime startTime
+- LocalTime endTime
+- LocalDate shiftDate
+- User supervisor
+- Double targetProduction
+- ShiftStatus status
+- String handoverNotes
+- LocalDateTime createdAt
+
+User
+- UUID id
+- String username
+- String email
+- String password
+- String firstName
+- String lastName
+- Set<Role> roles
+- String phoneNumber
+- UserStatus status
+- LocalDate hireDate
+- LocalDateTime lastLogin
+- LocalDateTime createdAt
+- LocalDateTime updatedAt
+
+UserCertificate
+- UUID id
+- User user
+- Certificate certificate
+- String comments
+
+UserRole
+- UUID id
+- User user
+- Role role
+- LocalDateTime assignedAt
+- String assignedBy
+- LocalDateTime expiresAt
