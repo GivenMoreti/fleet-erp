@@ -12,10 +12,12 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "pre_start_check")
 public class PreStartCheck {
   @Id
@@ -44,4 +46,22 @@ public class PreStartCheck {
 
   private String notes;
   private LocalDateTime createdAt;
+
+
+  public boolean getEngine(){
+    return this.engine;
+  }
+
+    public boolean getOilLevel(){
+    return this.oilLevel;
+  }
+
+  public void setEngine(boolean engine){
+    this.engine = engine;
+  }
+
+  public void setOilLevel(boolean oil){
+    this.oilLevel = oil;
+  }
+  
 }
